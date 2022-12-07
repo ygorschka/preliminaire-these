@@ -16,6 +16,10 @@ class Data:
         self.dx = 1e-3
         # Coefficient adiabatique
         self.gamma = 1.0
+        # Dimension du probleme
+        self.dim = 1
+        # CFL
+        self.cfl = 0.9
 
     def get_Lx(self):
         return self.Lx
@@ -28,3 +32,9 @@ class Data:
 
     def get_coeff_adiab(self):
         return self.gamma
+
+    def get_dim(self):
+        return self.dim
+
+    def get_cfl(self):
+        return self.cfl
