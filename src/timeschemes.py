@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from parameters import Parameters
+from datafile import Data
 
 class TimeSchemes:
     """
@@ -8,7 +8,7 @@ class TimeSchemes:
     """
 
     def __init__(self):
-        param = Parameters()
+        data = Data()
 
     def EE(self):
         None

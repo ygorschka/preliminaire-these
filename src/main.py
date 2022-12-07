@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 
+"""
+    Code 1D permettant de resoudre les equations d'Euler
+"""
+
 from finitevolumes import FiniteVolumes
-from parameters import Parameters
+from datafile import Data
 from timeschemes import TimeSchemes
 
 
@@ -9,9 +13,7 @@ def main():
     # Initialisation des classes
     fv = FiniteVolumes()
     ts = TimeSchemes()
-    param = Parameters()
-
-    
+    data = Data()
 
     print("\nEnd of file")
 
