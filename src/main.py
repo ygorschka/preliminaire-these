@@ -15,6 +15,8 @@ def main():
     ts = TimeSchemes()
     data = Data()
 
+    print("All right")
+
     print("\nEnd of file")
 
 if __name__ == "__main__":
