@@ -10,10 +10,10 @@ class FiniteVolumes:
         Finite volumes schemes
     """
 
-    def __init__(self):
+    def __init__(self,filename):
         # Initialisation des classes
-        self.data = Data()
-        self.fct = Function()
+        self.data = Data(filename)
+        self.fct = Function(filename)
 
         # Initialisation de certaines variables
         self.coeff_adiab = self.data.get_coeff_adiab()

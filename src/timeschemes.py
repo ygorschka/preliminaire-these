@@ -7,8 +7,8 @@ class TimeSchemes:
         Time schemes
     """
 
-    def __init__(self):
-        data = Data()
+    def __init__(self,filename):
+        data = Data(filename)
 
     def EE(self):
         None

@@ -7,9 +7,9 @@ class Function:
         Various functions
     """
 
-    def __init__(self):
+    def __init__(self,filename):
         # Initialisation des classes
-        data = Data()
+        data = Data(filename)
 
         # Initialisation de certaines variables
         self.coeff_adiab = data.get_coeff_adiab()

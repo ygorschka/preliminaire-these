@@ -12,20 +12,20 @@ from pathlib import Path
 from timeschemes import TimeSchemes
 
 def main():
-    # Initialisation des classes
-    fv = FiniteVolumes()
-    ts = TimeSchemes()
-    data = Data()
-
-    # Initialisation de certaines variables
-    test_path = data.get_test_path()
-
     # Parser pour recuperer le fichier de cas de test
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', metavar='Test file', type=str,
                         help = 'File describing the test case')
     args = parser.parse_args()
     filename = args.filename
+
+    # Initialisation des classes
+    fv = FiniteVolumes(filename)
+    ts = TimeSchemes(filename)
+    data = Data(filename)
+
+    # Initialisation de certaines variables
+    test_path = data.get_test_path()
 
     test_file_path = Path(test_path + filename)
 
@@ -48,10 +48,6 @@ def main():
         json_dictionary = tc.read()
         if json_dictionary:
             test_dictionary = json.loads(json_dictionary)
-
-    print(f"test_dictionary = {test_dictionary['av']}")
-
-    # Erreur pour l'entree d'un dico : KeyError
 
     print("\nEnd of file")
 
