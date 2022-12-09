@@ -8,6 +8,8 @@ class Data:
     # Recuperer ces informations dans un fichier a terme
 
     def __init__(self):
+        # Path pour les cas de test
+        self.test_path = "/mnt/c/Users/ygors/Documents/Thèse/preliminaire/test_case/"
         # Longueur du domaine
         self.Lx = 1.0
         # Xo
@@ -38,3 +40,6 @@ class Data:
 
     def get_cfl(self):
         return self.cfl
+
+    def get_test_path(self):
+        return self.test_path

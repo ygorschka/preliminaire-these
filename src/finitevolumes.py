@@ -60,7 +60,7 @@ class FiniteVolumes:
 
         if self.dim == 1:
             v_tilde_square = fct.velocity_square(u_tilde)
-        else if self.dim == 2:
+        elif self.dim == 2:
             v_tilde_square = fct.velocity_square(u_tilde, v_tilde)
         else:
             print("Error dimension >2")
@@ -153,7 +153,7 @@ class FiniteVolumes:
         # Calcul des vitesses d'onde
         wave = np.zeros(size)
         square_a_tilde = pow(a_tilde,2)
-        factor = 1/(2*square_a_tilde
+        factor = 1/(2*square_a_tilde)
 
         wave[0] = factor*(delta_p - rho_tilde*a_tilde*delta_u)
         wave[1] = delta_rho - delta_p/square_a_tilde
