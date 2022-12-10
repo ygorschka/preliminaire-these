@@ -15,21 +15,9 @@ class Data:
         self.test_path = "/mnt/c/Users/ygors/Documents/Thèse/preliminaire/test_case/"
         # Nom du cas de test
         self.filename = filename
-        # Longueur du domaine
-        self.Lx = 1.0
-        # Xo
-        self.x0 = 0.0
-        # Pas d'espace
-        self.dx = 1e-3
-        # Coefficient adiabatique
-        self.gamma = 1.0
-        # Dimension du probleme
-        self.dim = 1
-        # CFL
-        self.cfl = 0.9
 
         # Chemin complet du cas de test
-        test_file_path = Path(self.test_path + filename)
+        test_file_path = Path(self.test_path + self.filename)
 
         # Erreur si le cas de test n'existe pas
         if not test_file_path.exists():
@@ -37,20 +25,42 @@ class Data:
             exit()
 
         # Liste contenant tous les parametres du cas de test
-        Parameters = ['a','b','c','d']
+        Parameters = ['dx','Tf','Lx','x0','dim','cfl','adiab','flux','variable']
 
         # Recuperer les infos dans le fichier du cas de test
         with test_file_path.open() as tc:
             json_dictionary = tc.read()
             if json_dictionary:
-                test_dictionary = json.loads(json_dictionary)
+                param_dictionary = json.loads(json_dictionary)
 
-        for e in Parameters:
-            try :
-                param = test_dictionary[e]
-            except KeyError:
-                print("Error in test file")
-                exit()
+        try :
+            # Pas d'espace
+            self.dx = param_dictionary['dx']
+            # Longueur du domaine
+            self.Lx = param_dictionary['Lx']
+            # Xo
+            self.x0 = param_dictionary['x0']
+            # Coefficient adiabatique
+            self.gamma = param_dictionary['adiab']
+            # Tf
+            self.Tf = param_dictionary['Tf']
+            # Dimension du probleme
+            self.dim = param_dictionary['dim']
+            # CFL
+            self.cfl = param_dictionary['cfl']
+            # Choix du flux - Roe
+            self.which_flux = param_dictionary['flux']
+            # Choix des variables - conserved ou primitives
+            self.variable = param_dictionary['variable']
+        except KeyError:
+            print("Error test file")
+            exit()
+
+    def get_which_flux(self):
+        return self.which_flux
+
+    def get_variable(self):
+        return self.variable
 
     def get_Lx(self):
         return self.Lx
@@ -72,3 +82,6 @@ class Data:
 
     def get_test_path(self):
         return self.test_path
+
+    def get_tf(self):
+        return self.Tf

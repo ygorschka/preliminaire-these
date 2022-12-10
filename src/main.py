@@ -25,13 +25,17 @@ def main():
     data = Data(filename)
 
     # Initialisation de certaines variables
-    test_path = data.get_test_path()
+    dx = data.get_dx()
+    cfl = data.get_cfl()
+    dim = data.get_dim()
+    which_flux = data.get_which_flux()
 
-    test_file_path = Path(test_path + filename)
-
-    if not test_file_path.exists():
-        print("Test case does not exist")
-        exit()
+    print(f'dx = {cfl}')
+    print(f'type of dx = {type(cfl)}')
+    print(f'dx = {dim}')
+    print(f'type of dx = {type(dim)}')
+    print(f'dx = {which_flux}')
+    print(f'type of dx = {type(which_flux)}')
 
     # Permet de créer un dico puis de le sauvegarder
     """l = ['a', 'b', 'c', 'd']
@@ -39,15 +43,8 @@ def main():
     dico = dict()
     for i in range(len(l)):
         dico.update({l[i]: ll[i]})
-
     with pt.open("w") as tc:
         json.dump(dico, tc, indent=3)"""
-
-    # Test récupérer les infos des fichiers de cas de test
-    with test_file_path.open() as tc:
-        json_dictionary = tc.read()
-        if json_dictionary:
-            test_dictionary = json.loads(json_dictionary)
 
     print("\nEnd of file")
 
