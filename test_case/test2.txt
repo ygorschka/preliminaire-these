@@ -1,0 +1,11 @@
+{
+   "dx": 0.001,
+   "Lx": 1.0,
+   "x0": 0.0,
+   "Tf": 0.1,
+   "adiab": 1.4,
+   "dim": 1,
+   "cfl": 0.9,
+   "flux": "Roe",
+   "variable": "conserved"
+}
